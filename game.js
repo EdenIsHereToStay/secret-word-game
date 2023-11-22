@@ -1,17 +1,23 @@
 // game.js
 document.getElementById("startButton").addEventListener("click", function() {
-    const secretWord = 'tomato';
-    let message = 'Access denied :(';
+    document.getElementById("gameArea").style.display = "block";
     let attempts = 5;
+    document.getElementById("attemptsInfo").textContent = `You have ${attempts} tries.`;
 
-    while (attempts > 0) {
-        let guess = prompt(`Enter the secret word. You have ${attempts} tries.`);
-        if (guess.toLowerCase() === secretWord) {
-            message = 'Welcome to the secret loop world!';
-            break;
+    document.getElementById("submitGuess").addEventListener("click", function() {
+        const secretWord = 'tomato';
+        let userGuess = document.getElementById("userGuess").value;
+
+        if (userGuess.toLowerCase() === secretWord) {
+            document.getElementById("resultMessage").textContent = 'Welcome to the secret loop world!';
+            document.getElementById("gameArea").style.display = "none";
+        } else {
+            attempts--;
+            document.getElementById("attemptsInfo").textContent = `You have ${attempts} tries left.`;
+            if (attempts <= 0) {
+                document.getElementById("resultMessage").textContent = 'Access denied :(';
+                document.getElementById("gameArea").style.display = "none";
+            }
         }
-        attempts--;
-    }
-
-    alert(message);
+    });
 });
