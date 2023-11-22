@@ -1,27 +1,31 @@
-let attempts = 5;
-const secretWord = 'tomato';
+document.addEventListener('DOMContentLoaded', function() {
+    const secretWord = 'tomato';
+    let attempts;
+    const gameArea = document.getElementById('gameArea');
+    const attemptsInfo = document.getElementById('attemptsInfo');
+    const resultMessage = document.getElementById('resultMessage');
+    const userGuess = document.getElementById('userGuess');
 
-document.getElementById("startButton").addEventListener("click", function() {
-    document.getElementById("gameArea").style.display = "block"; // Show game area
-    attempts = 5; // Reset attempts each time game starts
-    document.getElementById("userGuess").value = ''; // Clear previous guess
-    document.getElementById("attemptsInfo").textContent = `You have ${attempts} tries.`;
-    document.getElementById("resultMessage").textContent = ''; // Clear previous message
-});
+    document.getElementById('startButton').addEventListener('click', function() {
+        attempts = 5;
+        gameArea.style.display = 'block';
+        attemptsInfo.textContent = `You have ${attempts} tries.`;
+        resultMessage.textContent = '';
+        userGuess.value = '';
+    });
 
-document.getElementById("submitGuess").addEventListener("click", function() {
-    let userGuess = document.getElementById("userGuess").value;
-
-    if (userGuess.toLowerCase() === secretWord) {
-        document.getElementById("resultMessage").textContent = 'Welcome to the secret loop world!';
-        document.getElementById("gameArea").style.display = "none";
-    } else {
-        attempts--;
-        if (attempts > 0) {
-            document.getElementById("attemptsInfo").textContent = `You have ${attempts} tries left.`;
+    document.getElementById('submitGuess').addEventListener('click', function() {
+        if (userGuess.value.toLowerCase() === secretWord) {
+            resultMessage.textContent = 'Welcome to the secret loop world!';
+            gameArea.style.display = 'none';
         } else {
-            document.getElementById("resultMessage").textContent = 'Access denied :(';
-            document.getElementById("gameArea").style.display = "none";
+            attempts--;
+            if (attempts > 0) {
+                attemptsInfo.textContent = `You have ${attempts} tries left.`;
+            } else {
+                resultMessage.textContent = 'Access denied :(';
+                gameArea.style.display = 'none';
+            }
         }
-    }
+    });
 });
