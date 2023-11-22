@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Secret Word Guessing Game</title>
+    <style>
+        /* Add basic styling here if necessary */
+        #gameArea { display: none; }
+    </style>
 </head>
 <body>
-    <h2>Clue: It's a red fruit often mistaken for a vegetable.</h2>
+    <h2 id="clue">Clue: It's a red fruit often mistaken for a vegetable.</h2>
     <button id="startButton">Start Game</button>
     
-    <div id="gameArea" style="display:none;">
+    <div id="gameArea">
         <input type="text" id="userGuess" placeholder="Enter your guess here">
         <button id="submitGuess">Submit Guess</button>
         <p id="attemptsInfo"></p>
