@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('submitGuess').addEventListener('click', function() {
         // Check if the guess is correct
         if (userGuess.value.toLowerCase() === secretWord) {
-            resultMessage.textContent = 'Welcome to the secret loop world!';
+            resultMessage.textContent = 'Congratulations!';
             gameArea.style.display = 'none';
         } else {
             // Decrement attempts and update UI
