@@ -4,24 +4,9 @@
     <title>Secret Word Guessing Game</title>
 </head>
 <body>
-    <script>
-        const secretWord = 'tomato';
-        let message = 'Access denied :(';
-        let attempts = 5;
+    <h2>Clue: It's a red fruit often mistaken for a vegetable.</h2>
+    <button id="startButton">Start Game</button>
 
-        function guessSecretWord() {
-            while (attempts > 0) {
-                let guess = prompt(`Enter the secret word. You have ${attempts} tries.`);
-                if (guess === secretWord) {
-                    message = 'Welcome to the secret loop world!';
-                    break;
-                }
-                attempts--;
-            }
-            alert(message);
-        }
-
-        window.onload = guessSecretWord;
-    </script>
+    <script src="game.js"></script>
 </body>
 </html>
